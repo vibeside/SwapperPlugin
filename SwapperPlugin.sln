@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35431.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapperPlugin", "Il2cppOrMonoPlugin\SwapperPlugin.csproj", "{7625C0C3-F409-42DD-A4EB-776614CBB776}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7625C0C3-F409-42DD-A4EB-776614CBB776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7625C0C3-F409-42DD-A4EB-776614CBB776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7625C0C3-F409-42DD-A4EB-776614CBB776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7625C0C3-F409-42DD-A4EB-776614CBB776}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC8334AB-C167-4A0B-B991-918FAD1F677C}
+	EndGlobalSection
+EndGlobal

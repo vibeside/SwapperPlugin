@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+	  <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>embedded</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+	<ItemGroup>
+		<BuildArtifacts Include="$(TargetPath)" />
+		<PluginOutput Include="C:\Users\Aaron\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\Plugins" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="0Harmony">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\0Harmony.dll</HintPath>
+	  </Reference>
+	  <Reference Include="AssetRipper.VersionUtilities">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\AssetRipper.VersionUtilities.dll</HintPath>
+	  </Reference>
+	  <Reference Include="AssetsTools.NET">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\AssetsTools.NET.dll</HintPath>
+	  </Reference>
+	  <Reference Include="bHapticsLib">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\bHapticsLib.dll</HintPath>
+	  </Reference>
+	  <Reference Include="IndexRange">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\IndexRange.dll</HintPath>
+	  </Reference>
+	  <Reference Include="MelonLoader">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\MelonLoader.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Mono.Cecil">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\Mono.Cecil.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Mono.Cecil.Mdb">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\Mono.Cecil.Mdb.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Mono.Cecil.Pdb">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\Mono.Cecil.Pdb.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Mono.Cecil.Rocks">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\Mono.Cecil.Rocks.dll</HintPath>
+	  </Reference>
+	  <Reference Include="MonoMod.RuntimeDetour">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\MonoMod.RuntimeDetour.dll</HintPath>
+	  </Reference>
+	  <Reference Include="MonoMod.Utils">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\MonoMod.Utils.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Newtonsoft.Json">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\Newtonsoft.Json.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Tomlet">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\Tomlet.dll</HintPath>
+	  </Reference>
+	  <Reference Include="ValueTupleBridge">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\ValueTupleBridge.dll</HintPath>
+	  </Reference>
+	  <Reference Include="WebSocketDotNet">
+	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\WebSocketDotNet.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+	<Target Name="Copy and Test" AfterTargets="PostBuildEvent">
+		<Copy DestinationFolder="@(PluginOutput)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" SourceFiles="@(BuildArtifacts)" />
+		<!-- other steps here -->
+	</Target>
+</Project>
