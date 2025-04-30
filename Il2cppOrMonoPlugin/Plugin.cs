@@ -35,10 +35,15 @@ namespace SwapperPlugin
                     if (Path.GetFileName(s).Contains("S1API")) continue;
                     fBackend = AssemblyChecker.CheckAtPath(s);
                     //MelonLogger.Msg(fBackend.ToString());
-                    if (fBackend == Backend.Unknown) MelonLogger.Error(
+                    if (fBackend == Backend.Unknown)
+                    {
+                        MelonLogger.Error(
                         "Found a DLL, but couldn't determine backend!" +
                         "\nTell coolpaca in the S1 modding discord and" +
                         $"\nprovide the mod name! File: {Path.GetFileName(s)}");
+                        continue;
+                    }
+                    if (fBackend == Backend.S1API) continue;
                     if (fBackend == backend) continue;
                     GC.Collect();
                     GC.WaitForPendingFinalizers();

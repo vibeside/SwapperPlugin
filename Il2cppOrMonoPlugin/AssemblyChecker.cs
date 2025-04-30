@@ -10,12 +10,13 @@ namespace SwapperPlugin
     {
         Unknown,
         Il2cpp,
-        Mono
+        Mono,
+        S1API
     }
     internal class AssemblyChecker
     {
-        public static string[] monoRefs = ["mscorlib","netstandard","scheduleone","system"];
-        public static string[] il2cppRefs = ["il2cppmscorlib","il2cppscheduleone","il2cppsystem"];
+        public static string[] monoRefs = ["scheduleone","system"];
+        public static string[] il2cppRefs = ["il2cppscheduleone","il2cppsystem"];
         public static Backend CheckAtPath(string path)
         {
             string workingDir = Path.GetDirectoryName(path);
@@ -26,16 +27,10 @@ namespace SwapperPlugin
             if(Path.GetFileName(path).ToLower().Contains("il2cpp")) return Backend.Il2cpp;
             foreach (ModuleDefinition m in def.Modules)
             {
-                foreach (TypeReference s in m.GetTypeReferences())
-                {
-                    if (!string.IsNullOrEmpty(s.Namespace))
-                    {
-                        if (il2cppRefs.Contains(s.Namespace.ToLower())) return Backend.Il2cpp;
-                        if (monoRefs.Contains(s.Namespace.ToLower()) && !s.Namespace.ToLower().Contains("il2cpp"))
-                            return Backend.Mono;
-                    
-                    }
-                }
+                var typeReferences = m.GetTypeReferences();
+                if (typeReferences.Any(x => x.Namespace.ToLower().Contains("s1api"))) return Backend.S1API;
+                if (typeReferences.Any(x => il2cppRefs.Contains(x.Namespace.ToLower()))) return Backend.Il2cpp;
+                if (typeReferences.Any(x => monoRefs.Contains(x.Namespace.ToLower()))) return Backend.Mono;
             }
             return Backend.Unknown;
         }
