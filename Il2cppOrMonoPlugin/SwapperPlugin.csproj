@@ -10,10 +10,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>portable</DebugType>
 	</PropertyGroup>
-	<ItemGroup>
-		<BuildArtifacts Include="$(TargetPath)" />
-		<PluginOutput Include="C:\Users\Aaron\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\Plugins" />
-	</ItemGroup>
+	
 	<ItemGroup>
 	  <Reference Include="0Harmony">
 	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\0Harmony.dll</HintPath>
@@ -64,8 +61,14 @@
 	    <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\MelonLoader\net35\WebSocketDotNet.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
+	<ItemGroup>
+		<BuildArtifacts Include="$(TargetPath)" />
+		<PluginOutput Include="C:\Users\Aaron\AppData\Roaming\r2modmanPlus-local\ScheduleI\profiles\Default\Plugins" />
+		<PluginOutput2 Include="C:\Users\Aaron\Desktop\things i have created\mods\SwapperPlugin\Plugins" />
+	</ItemGroup>
 	<Target Name="Copy and Test" AfterTargets="PostBuildEvent">
 		<Copy DestinationFolder="@(PluginOutput)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" SourceFiles="@(BuildArtifacts)" />
+		<Copy DestinationFolder="@(PluginOutput2)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" SourceFiles="@(BuildArtifacts)" />
 		<!-- other steps here -->
 	</Target>
 </Project>

@@ -22,9 +22,9 @@ namespace SwapperPlugin
             string workingDir = Path.GetDirectoryName(path);
             if (!File.Exists(path)) return Backend.Unknown;
             if (!path.Contains(".dll")) return Backend.Unknown;
-            AssemblyDefinition def = AssemblyDefinition.ReadAssembly(path);
             if (Path.GetFileName(path).ToLower().Contains("mono")) return Backend.Mono;
             if(Path.GetFileName(path).ToLower().Contains("il2cpp")) return Backend.Il2cpp;
+            AssemblyDefinition def = AssemblyDefinition.ReadAssembly(path);
             foreach (ModuleDefinition m in def.Modules)
             {
                 var typeReferences = m.GetTypeReferences();
